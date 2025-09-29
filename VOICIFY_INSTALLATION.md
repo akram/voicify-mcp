@@ -45,9 +45,23 @@ if VOICIFY_AVAILABLE:
 "
 ```
 
-### Option 2: Real Voicify Installation
+### Option 2: Real Voicify Installation (Python 3.12+)
+
+**⚠️ Important**: Real Voicify requires Python 3.12 or higher.
 
 If you have access to the real Voicify package, you can install it directly:
+
+#### From Wheel File (Included)
+```bash
+# Install dependencies including real Voicify
+pip install -r requirements-voicify.txt
+
+# OR use Makefile
+make install-voicify-real
+
+# OR install manually
+pip install voicify-0.1.0-py3-none-any.whl
+```
 
 #### From Private Registry
 ```bash
@@ -60,14 +74,6 @@ pip install voicify --index-url https://your-private-registry.com/
 pip install /path/to/voicify/source/
 ```
 
-#### From Wheel File (Available in Repository)
-```bash
-# Install the real Voicify wheel file
-pip install voicify-0.1.0-py3-none-any.whl
-
-# Or install all requirements including Voicify
-pip install -r requirements.txt  # Now includes wheel file
-```
 
 **Note**: The real Voicify package generates MP3 format (not WAV) and connects to a cloud API.
 

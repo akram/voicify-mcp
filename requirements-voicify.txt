@@ -1,0 +1,5 @@
+# Requirements including Voicify (for Python 3.12+)
+-r requirements.txt
+
+# Real Voicify package (wheel file)
+./voicify-0.1.0-py3-none-any.whl

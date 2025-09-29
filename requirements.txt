@@ -8,5 +8,6 @@ pytest-cov
 pytest-watch
 requests
 
-# Real Voicify package (wheel file)
-./voicify-0.1.0-py3-none-any.whl
+# Real Voicify package (wheel file) - installed conditionally based on Python version
+# Install manually: pip install ./voicify-0.1.0-py3-none-any.whl
+# Note: Requires Python 3.12+

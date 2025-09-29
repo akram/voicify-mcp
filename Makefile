@@ -6,6 +6,7 @@ help:
 	@echo "  run        - Start the Voicify TTS server on port 8001"
 	@echo "  install    - Install Python dependencies"
 	@echo "  install-voicify-mock - Install mock Voicify for development"
+	@echo "  install-voicify-real - Install real Voicify package (Python 3.12+)"
 	@echo "  fix-numpy  - Fix NumPy compatibility issue (downgrade to <2.0)"
 	@echo "  test       - Run unit tests"
 	@echo "  test-cov   - Run tests with coverage report"
@@ -30,6 +31,11 @@ install-voicify-mock:
 	@echo "Installing mock Voicify package for development..."
 	. venv/bin/activate && pip install -e mock_voicify/
 	@echo "✅ Mock Voicify TTS available for development!"
+
+install-voicify-real:
+	@echo "Installing real Voicify package (requires Python 3.12+)..."
+	. venv/bin/activate && pip install -r requirements-voicify.txt
+	@echo "✅ Real Voicify TTS available!"
 
 # Fix NumPy compatibility issue
 fix-numpy:
