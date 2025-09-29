@@ -1,0 +1,18 @@
+# Core dependencies (same as requirements.txt)
+flask
+flask-cors
+flask-restx
+numpy<2.0.0
+pytest
+pytest-flask
+pytest-cov
+pytest-watch
+requests
+
+# CI-specific dependencies
+pytest-mock
+coverage[toml]
+
+# Voicify TTS (if available - may fail gracefully)
+# Note: The voicify package may not be publicly available
+# Install this manually for development: pip install voicify

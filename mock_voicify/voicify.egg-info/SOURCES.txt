@@ -1,0 +1,7 @@
+setup.py
+voicify/__init__.py
+voicify/tts.py
+voicify.egg-info/PKG-INFO
+voicify.egg-info/SOURCES.txt
+voicify.egg-info/dependency_links.txt
+voicify.egg-info/top_level.txt

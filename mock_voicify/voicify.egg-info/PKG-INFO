@@ -1,0 +1,15 @@
+Metadata-Version: 2.4
+Name: voicify
+Version: 1.0.0
+Summary: Mock Voicify TTS package for development
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.7
+Dynamic: classifier
+Dynamic: description
+Dynamic: requires-python
+Dynamic: summary
+
+This is a mock implementation of Voicify TTS for development and testing purposes.

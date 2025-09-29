@@ -2,4 +2,11 @@ flask
 flask-cors
 flask-restx
 numpy<2.0.0
+pytest
+pytest-flask
+pytest-cov
+pytest-watch
+requests
 
+# Real Voicify package (wheel file)
+./voicify-0.1.0-py3-none-any.whl

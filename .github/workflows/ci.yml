@@ -1,0 +1,68 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: Cache pip dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    
+    - name: Verify module import
+      run: |
+        python -c "import voicify_server; print('✅ Module imports successfully')"
+    
+    - name: Run tests
+      run: |
+        python -m pytest tests/ -v
+    
+    - name: Run integration tests separately
+      run: |
+        python -m pytest tests/test_integration.py -v
+    
+    - name: Test fail-fast functionality
+      run: |
+        python -c "
+        from voicify_server import VOICIFY_AVAILABLE
+        if not VOICIFY_AVAILABLE:
+            print('✅ Running without Voicify - testing fail-fast behavior')
+            from voicify_server import text_to_speech
+            try:
+                text_to_speech('Test audio')
+                print('❌ Should have failed!')
+                exit(1)
+            except RuntimeError as e:
+                if 'Voicify TTS not available' in str(e):
+                    print('✅ Fail-fast working correctly!')
+                else:
+                    print(f'❌ Wrong error: {e}')
+                    exit(1)
+        else:
+            print('✅ Voicify is available')
+        "
